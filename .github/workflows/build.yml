@@ -13,6 +13,6 @@ jobs:
         uses: aormsby/Fork-Sync-With-Upstream-action@v3.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          upstream_repo: 78/xiaozhi-esp32 
+          upstream_repo: "78/xiaozhi-esp32" 
           branch: main 
           merge_method: hardreset
