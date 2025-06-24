@@ -1,18 +1,22 @@
+
 name: Sync Fork
 
 on:
   schedule:
-    - cron: "0 * * * *" # 每30分钟
-  workflow_dispatch: # 手动触发
+    - cron: "0 * * * *"
+  workflow_dispatch:
 
 jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       - name: Sync Fork
         uses: aormsby/Fork-Sync-With-Upstream-action@v3.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          upstream_repo: "78/xiaozhi-esp32" 
-          branch: main 
+          upstream_repo: "78/xiaozhi-esp32"
+          branch: main
           merge_method: hardreset
