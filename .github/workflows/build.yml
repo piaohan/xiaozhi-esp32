@@ -2,19 +2,17 @@ name: Sync Fork
 
 on:
   schedule:
-    - cron: '*/30 * * * *' # every 30 minutes
-  workflow_dispatch: # on button click
+    - cron: "0 * * * *" # 每30分钟
+  workflow_dispatch: # 手动触发
 
 jobs:
   sync:
-
     runs-on: ubuntu-latest
-
     steps:
-      - uses: tgymnich/fork-sync@v2.0
-      - name: Fork Sync
+      - name: Sync Fork
+        uses: aormsby/Fork-Sync-With-Upstream-action@v3.0
         with:
-          token: ${{ secrets.PERSONAL_TOKEN }}
-          owner: 78
-          base: main
-          head: main
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          upstream_repo: 78/xiaozhi-esp32 
+          branch: main 
+          merge_method: hardreset
